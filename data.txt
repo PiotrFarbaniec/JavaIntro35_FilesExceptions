@@ -1,0 +1,10 @@
+Upraszczając, plik jest to uporządkowany zbiór danych o określonej długości.
+Każdy plik powinien mieć swoją nazwę oraz ścieżkę przechowującą lokalizację pliku na dysku.
+To w bardzo prosty sposób definiuje czym jest plik.
+W programowaniu często dochodzi do sytuacji, w której będzie wymagana interakcja z plikami
+zapis wyniku działania aplikacji do pliku lub odczyt danych, które w programie powinny
+zostać przetworzone. Jak zostało wspomniane wcześniej plik posiada swoją ścieżkę,
+a ścieżka na ogół będzie składać się z folderów. Folder jest specyficznym przypadkiem pliku
+i posiada on bardzo podobne właściwości jak plik. Często operacje na plikach nazywa się
+operacjami wejścia/wyjścia (input/output). Wynika to z tego, że powyższe operacje możemy
+porównać do operacji odczytu (wejście) i zapisu (wyjście).
