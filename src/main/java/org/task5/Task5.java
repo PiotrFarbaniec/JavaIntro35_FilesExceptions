@@ -8,7 +8,7 @@ public class Task5 {
     static TextFormatter5 file = new TextFormatter5();
 
     public static void main(String[] args) {
-        System.out.println(file.readTextFile(pathName));
+
         System.out.println(magenta + file.reverseText(pathName) + reset);
     }
 }
