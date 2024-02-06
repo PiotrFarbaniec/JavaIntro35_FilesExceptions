@@ -1,5 +1,7 @@
 package org.task6;
 
+import java.nio.file.NoSuchFileException;
+
 public class Task6 {
     static String sourceFile = "data.txt";
     static String destFile = "output.txt";
@@ -7,7 +9,14 @@ public class Task6 {
 
 
     public static void main(String[] args) {
-        String text = (f.readTextFile(sourceFile)).toUpperCase();
-        f.writeToFile(destFile, text);
+        try {
+            String text = (f.readTextFile(sourceFile)).toUpperCase();
+            System.out.println(text);
+            f.writeToFile(destFile, text);
+        } catch (NullPointerException e1) {
+            System.err.println(e1.getMessage());
+        } catch (NoSuchFileException e2) {
+            System.err.println(e2.getMessage());
+        }
     }
 }
