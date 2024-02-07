@@ -1,6 +1,7 @@
 package org.task4;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -8,15 +9,17 @@ import java.nio.file.Path;
 
 public class TextFormatter4 {
 
-    public String readTextFromFile(String pathName) throws NullPointerException, NoSuchFileException {
+
+    public String readTextFile(String pathName) throws FileNotFoundException {
         String readedText = null;
-        File sourceFile = new File(pathName);
 
         if (pathName == null) {
-            throw new NullPointerException("File path name can't be null!");
+            throw new IllegalArgumentException("File path name is null!");
         }
-        else if (!sourceFile.exists() || pathName.isBlank()) {
-            throw new NoSuchFileException("Wrong file path name or no name has been provided");
+        File sourceFile = new File(pathName);
+
+        if (!sourceFile.exists() || pathName.isBlank()) {
+            throw new FileNotFoundException("Wrong file path name provided: " + pathName);
         }
         try {
             readedText = Files.readString(Path.of(pathName));
@@ -28,27 +31,16 @@ public class TextFormatter4 {
     }
 
 
-    public boolean isContainMatchesWord(String pathName, String find) {
+    public boolean isTextContainWord(String pathName, String searchWord) {
         try {
-            char[] charArray = (readTextFromFile(pathName).toLowerCase()).toCharArray();
-            char[] toFind = (find.toLowerCase()).toCharArray();
-            int n = charArray.length;
-            int m = toFind.length;
-
-            for (int i = 0; i <= n - m; i++) {
-                boolean isFound = true;
-
-                for (int j = 0; j < m; j++) {
-                    if (charArray[i + j] != toFind[j]) {
-                        isFound = false;
-                    }
+            if (searchWord !=null && readTextFile(pathName) != null) {
+                if (readTextFile(pathName).toLowerCase().contains(searchWord.toLowerCase())) {
+                    return true;
                 }
-                if (isFound) return true;
+                return false;
             }
-        } catch (NullPointerException e1) {
-            System.err.println(e1.getMessage());
-        } catch (NoSuchFileException e2) {
-            System.err.println(e2.getMessage());
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
         return false;
     }
