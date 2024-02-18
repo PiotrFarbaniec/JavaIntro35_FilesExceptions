@@ -4,10 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 
-public class TextFormatter4 {
+public class WordSearcher {
 
 
     public String readTextFile(String pathName) throws FileNotFoundException {
