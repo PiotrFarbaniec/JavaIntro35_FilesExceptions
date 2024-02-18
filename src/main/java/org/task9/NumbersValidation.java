@@ -12,12 +12,23 @@ public class NumbersValidation {
         for (int i = 0; i < values.length ; i++) {
             if (values[i] % divisor != 0) {
                 isDivisible[i] = false;
-                throw new IllegalArgumentException("Value: " + values[i] + " is not divisible by " + divisor);
+                try {
+                    swapCondition(isDivisible[i], values[i], divisor);
+                } catch (IllegalArgumentException e){
+                    System.err.println(e.getMessage());
+                }
             }
             else if (values[i] % divisor == 0) {
                 isDivisible[i] = true;
             }
         }
         return isDivisible;
+    }
+
+
+    private void swapCondition(boolean isDivisible, int value, int div) {
+        if (!isDivisible) {
+            throw new IllegalArgumentException("Value: " + value + " is not divisible by " + div);
+        }
     }
 }
