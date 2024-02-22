@@ -4,31 +4,24 @@ import java.util.Arrays;
 
 public class NumbersValidation {
 
-    public boolean[] areDivisibleBy(int[] values, int divisor) throws IllegalArgumentException {
-        if (values == null || divisor == 0) {
-            throw new IllegalArgumentException("Wrong parameters provided " + Arrays.toString(values) + " / " + divisor);
+    public void numbersValidation(int[] values) {
+        if (values == null || values.length == 0) {
+            throw new IllegalArgumentException("Wrong parameters provided: " + Arrays.toString(values));
         }
-        boolean[] isDivisible = new boolean[values.length];
         for (int i = 0; i < values.length ; i++) {
-            if (values[i] % divisor != 0) {
-                isDivisible[i] = false;
-                try {
-                    swapCondition(isDivisible[i], values[i], divisor);
-                } catch (IllegalArgumentException e){
-                    System.err.println(e.getMessage());
-                }
-            }
-            else if (values[i] % divisor == 0) {
-                isDivisible[i] = true;
+            try {
+                isDivisible (values[i]);
+                System.out.println(isDivisible(values[i]));
+            } catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
             }
         }
-        return isDivisible;
     }
 
-
-    private void swapCondition(boolean isDivisible, int value, int div) {
-        if (!isDivisible) {
-            throw new IllegalArgumentException("Value: " + value + " is not divisible by " + div);
+    private boolean isDivisible(int value) {
+        if (value % 3 != 0) {
+            throw new IllegalArgumentException("Value: " + value + " is not divisible by 3");
         }
+        return true;
     }
 }
